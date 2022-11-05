@@ -1,0 +1,22 @@
+{
+  "name": "grafica_presion",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."    
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Manuelvp7/GRAFICA_PRESION.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Manuelvp7/GRAFICA_PRESION/issues"
+  },
+  "homepage": "https://github.com/Manuelvp7/GRAFICA_PRESION#readme",
+  "devDependencies": {
+    "electron": "^21.2.2"
+  }
+}
