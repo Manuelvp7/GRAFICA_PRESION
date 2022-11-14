@@ -1,18 +1,14 @@
-
-// const Chart = require('chart.js');
-require('chart');
-
 var timeFormat = "MM/DD/YYYY HH:mm:ss";
 const date = []
 const data = []
 let error = 0
 const totalDuration = 10000;
-const delayBetweenPoints = 0;
 
-
-// const fileSelector = document.getElementById('file-selector');
-
-// fileSelector.addEventListener('change', openFile);
+const fileSelector = document.getElementById('fileTxt');
+//const fileSelector = document.getElementById('file-selector');
+if (fileSelector) {
+    fileSelector.addEventListener('change', openFile);
+}
 
 function openFile(event) {
     let file = event.target.files[0]
@@ -21,16 +17,13 @@ function openFile(event) {
         reader.onload = function(e) {
             let content = e.target.result;
             row = content.split('\r\n')
-                console.log(row)
             for (r in row) {
                 x = row[r]
-                    // console.log(x.substring(22, 26))
                 if (isNaN(x.substring(22, 26))) {
                     error += 1
                 } else {
                     date.push(x.substring(0, 20))
                     data.push(x.substring(22, 26))
-                        // console.log(r, date, data)
                         // data.push(x.substring(22,31))
                 }
             }
@@ -46,7 +39,6 @@ function openFile(event) {
     } else {
         document.getElementById('mesageError').innerText = "No se a seleccionado";
     }
-
 }
 
 function randomColorFactor() {
@@ -81,12 +73,15 @@ var config = {
         datasets: [{
             label: "Presion",
             data: data,
-            fill: true,
-            // borderDash: [5, 5]
         }]
     },
     options: {
         responsive: true,
+        interaction: {
+            mode: 'nearest',
+            axis: 'x',
+            intersect: false
+        },
         animation: {
             delay: (context) => {
                 let delay = 0;
@@ -111,7 +106,7 @@ var config = {
                     },
                 },
                 // min: 0,
-                // max: 10,
+                // max: 300,
             },
             y: {
                 type: 'linear',
@@ -131,34 +126,21 @@ var config = {
                     },
                 },
             },
-            // y1: {
-            //     type: 'linear',
-            //     display: true,
-            //     position: 'right',
-            // }
         },
         plugins: {
+            legend: {
+                display: false
+            },
             zoom: {
                 zoom: {
                     wheel: {
                         enabled: true
                     },
-                    //  Seleccionar el area
-                    // drag: {
-                    //     enabled: true,
-                    //     threshold: 100,
-                    //     borderColor: 1,
-                    //     borderColor: 'rgb(255, 99, 132,1)',
-                    // },
                     pinch: {
                         enabled: true
                     },
                     mode: "xy"
                 },
-                // animation: {
-                //     duration: 100000,
-                //     easing: 'easeOutCubic',
-                // },
                 pan: {
                     enabled: true
                 }
@@ -173,40 +155,3 @@ config.data.datasets.forEach(function(dataset) {
     dataset.pointBackgroundColor = randomColor(0.5);
     dataset.pointBorderWidth = 1;
 });
-
-// Animation chart
-// const totalDuration = 10000;
-// const delayBetweenPoints = totalDuration / data.length;
-// const previousY = (ctx) => ctx.index === 0 ? ctx.chart.scales.y.getPixelForValue(100) : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y;
-// const animation = {
-//     x: {
-//         type: 'number',
-//         easing: 'linear',
-//         duration: delayBetweenPoints,
-//         from: NaN,
-//         delay(ctx) {
-//             if (ctx.type !== 'data' || ctx.xStarted) {
-//                 return 0;
-//             }
-//             ctx.xStarted = true;
-//             return ctx.index * delayBetweenPoints;
-//         }
-//     },
-//     y: {
-//         type: 'number',
-//         easing: 'linear',
-//         duration: delayBetweenPoints,
-//         from: previousY,
-//         delay(ctx) {
-//             if (ctx.type !== 'data' || ctx.yStarted) {
-//                 return 0;
-//             }
-//             ctx.yStarted = true;
-//             return ctx.index * delayBetweenPoints;
-//         }
-//     }
-// };
-// window.onload = function() {
-//     var ctx = document.getElementById("canvas").getContext("2d");
-//     window.myLine = new Chart(ctx, config);
-// };
