@@ -1,6 +1,6 @@
 var timeFormat = "MM/DD/YYYY HH:mm:ss";
 const date = []
-const data = []
+const dataF = []
 let error = 0
 const totalDuration = 10000;
 
@@ -23,17 +23,18 @@ function openFile(event) {
                     error += 1
                 } else {
                     date.push(x.substring(0, 20))
-                    data.push(x.substring(22, 26))
+                    dataF.push(x.substring(22, 26))
                         // data.push(x.substring(22,31))
                 }
             }
             console.log(date)
-            console.log(data)
+            console.log(dataF)
             console.log("Inconcistencias encontradas: " + error)
 
             // Graficar
             var ctx = document.getElementById("canvas").getContext("2d");
             window.myLine = new Chart(ctx, config);
+            createTable()
         }
         reader.readAsText(file)
     } else {
@@ -43,6 +44,30 @@ function openFile(event) {
 
 function randomColorFactor() {
     return Math.round(Math.random() * 255);
+}
+
+function createTable() {
+    const tableBody = document.getElementById("tableData")
+    let dataHtml = ''
+    let size = parseInt(date.length)
+    for (let i = 0; i < size; i++) {
+        // console.log(date[i], dataF[i])
+        dataHtml += `<tr><td>${date[i]}</td><td>${dataF[i]}</td></tr>`
+    }
+    // console.log(dataHtml)
+    tableBody.innerHTML = dataHtml
+}
+
+function searchWord() {
+    const searchInput = document.getElementById("myInput")
+    const rows = document.querySelectorAll("tbody tr")
+        // console.log("Filtro tabla")
+        // console.log(rows)
+    const q = searchInput.value.toLowerCase()
+        // console.log(q)
+    rows.forEach((row) => {
+        row.querySelector("td").textContent.toLowerCase().startsWith(q) ? (row.style.display = "table-row") : (row.style.display = "none")
+    })
 }
 
 function randomColor(opacity) {
@@ -72,7 +97,7 @@ var config = {
         labels: date, // Date Objects
         datasets: [{
             label: "Presion",
-            data: data,
+            data: dataF,
         }]
     },
     options: {

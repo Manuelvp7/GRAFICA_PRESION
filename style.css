@@ -1,0 +1,56 @@
+.right {
+    position: absolute;
+    right: 0px;
+    width: 80%;
+    margin: 4px;
+}
+
+.left {
+    position: absolute;
+    left: 0px;
+    width: 20%;
+}
+
+#myInput {
+    background-image: url('/css/searchicon.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    width: 90%;
+    font-size: 16px;
+    margin: 4px;
+    /* padding: 12px 20px 12px 40px; */
+    border: 1px solid #ddd;
+    /* margin-bottom: 12px; */
+}
+
+.table-wrapper {
+    overflow-y: scroll;
+    height: fit-content;
+    max-height: 700px;
+}
+
+table {
+    font-family: 'Times New Roman', Times, serif;
+    border-collapse: collapse;
+    margin: 4px;
+}
+
+td,
+th {
+    border: 1px solid #cccccc;
+    padding: 2px;
+}
+
+th {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+tr:hover {
+    background-color: black;
+    color: white;
+}
