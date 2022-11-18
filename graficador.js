@@ -1,5 +1,32 @@
+// CLASE
+let measurePMap = new WeakMap
+class measureP {
+    constructor(date, dataPM) {
+        measurePMap.set(this, {
+            date: date,
+            dataPM: dataPM
+        })
+    }
+
+    set setDate(date) {
+        measurePMap.get(this).date = date
+    }
+
+    set setDataPM(dataPM) {
+        measurePMap.get(this).dataPM = dataPM
+    }
+
+    get getDate() {
+        return measurePMap.get(this).date
+    }
+    get getDataPM() {
+        return measurePMap.get(this).dataPM
+    }
+}
+
 var timeFormat = "MM/DD/YYYY HH:mm:ss";
-const date = []
+const measures = []
+const dateF = []
 const dataF = []
 let error = 0
 const totalDuration = 10000;
@@ -17,19 +44,27 @@ function openFile(event) {
         reader.onload = function(e) {
             let content = e.target.result;
             row = content.split('\r\n')
+            row.pop()
             for (r in row) {
                 x = row[r]
                 if (isNaN(x.substring(22, 26))) {
                     error += 1
                 } else {
-                    date.push(x.substring(0, 20))
-                    dataF.push(x.substring(22, 26))
+                    newMeasureP = new measureP(x.substring(0, 20), x.substring(22, 26))
                         // data.push(x.substring(22,31))
                 }
+                measures.push(newMeasureP)
+
             }
-            console.log(date)
-            console.log(dataF)
+            console.log(measures)
             console.log("Inconcistencias encontradas: " + error)
+                // OTRA FORMA DE LLAMAR LOS DATOS PARA LA GRAFICA
+            for (var i = 0; i < measures.length; i++) {
+                dateF.push(measures[i].getDate)
+                dataF.push(measures[i].getDataPM)
+            }
+            console.log(dataF)
+            console.log(dateF)
 
             // Graficar
             var ctx = document.getElementById("canvas").getContext("2d");
@@ -49,12 +84,10 @@ function randomColorFactor() {
 function createTable() {
     const tableBody = document.getElementById("tableData")
     let dataHtml = ''
-    let size = parseInt(date.length)
-    for (let i = 0; i < size; i++) {
-        // console.log(date[i], dataF[i])
-        dataHtml += `<tr><td>${date[i]}</td><td>${dataF[i]}</td></tr>`
+        // console.log("TABLE")
+    for (var i = 0; i < measures.length; i++) {
+        dataHtml += `<tr><td>${measures[i].getDate}</td><td>${measures[i].getDataPM}</td></tr>`
     }
-    // console.log(dataHtml)
     tableBody.innerHTML = dataHtml
 }
 
@@ -94,7 +127,7 @@ function zoom(value) {
 var config = {
     type: "line",
     data: {
-        labels: date, // Date Objects
+        labels: dateF, // Date Objects
         datasets: [{
             label: "Presion",
             data: dataF,
