@@ -213,3 +213,48 @@ config.data.datasets.forEach(function(dataset) {
     dataset.pointBackgroundColor = randomColor(0.5);
     dataset.pointBorderWidth = 1;
 });
+
+
+function estadisticas() {
+    let suma = 0,
+        cont1 = 0,
+        cont2 = 0,
+        moda,
+        num,
+        mediana
+
+    // PROMEDIO
+    for (let i = 0; i < dataF.length; i++) {
+        suma += parseInt(dataF[i])
+    }
+    let promedio = suma / dataF.length
+
+    // MODA
+    for (let j = 0; j < dataF.length; j++) {
+        for (let k = 0; k < dataF.length; k++) {
+            if (dataF[j] == dataF[k] && j != k) {
+                cont1++
+            }
+            if (cont1 > cont2) {
+                cont2 = cont1
+                moda = dataF[j]
+            }
+        }
+        cont1 = 0
+    }
+
+    // MEDIANA
+    num = dataF.sort((x, y) => x - y)
+    let mitad = Math.floor(num.length / 2)
+    mediana = num.length % 2 == 1 ? num[mitad] : (num[mitad - 1] + num[mitad + 2] / 2)
+
+    // MAX MIN
+    let max = Math.max(...dataF)
+    let min = Math.min(...num)
+
+    console.log(promedio)
+    console.log(moda)
+    console.log(mediana)
+    console.log(max)
+    console.log(min)
+}

@@ -7,11 +7,18 @@
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
     <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'" /> -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    <!-- GRAFICA -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/1.0.0/chartjs-plugin-zoom.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-adapter-moment/1.0.0/chartjs-adapter-moment.min.js"></script>
+
+    <!-- DATE RANGE PICKER -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
     <link rel="stylesheet" href="style.css">
     <title>Graficador de presión</title>
@@ -43,15 +50,18 @@
             <button onclick="resetZoom()">Reset Zoom</button>
             <button onclick="zoom(1.1)">Zoom +10%</button>
             <button onclick="zoom(0.9)">Zoom -10%</button>
-            <!-- <canvas id="canvas" width="150" height="50"></canvas> -->
+            <input type="text" name="daterange" value="01/01/2018 - 01/15/2018" width="200px" />
+
             <canvas id="canvas" height="200" width="400"></canvas>
-            <input onchange="filterData()" type="date" id="startdate">
-            <input onchange="filterData()" type="date" id="enddate">
+
 
         </div>
     </div>
 </body>
 
 <script src="graficador.js"></script>
+<script src="datarange.js"></script>
+
+<!-- https://www.escom.ipn.mx/SSEIS/apoyoseducativos/docs/ss_registroSS_fueraESCOM_distancia_2021.pdf -->
 
 </html>

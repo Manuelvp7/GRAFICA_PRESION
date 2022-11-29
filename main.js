@@ -17,7 +17,8 @@ const createWindow = () => {
 
         }
     })
-    win.loadFile('index.html')
+    win.loadFile('daterangepicker.html')
+        // win.loadFile('index.html')
 }
 
 
