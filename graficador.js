@@ -1,4 +1,7 @@
 // CLASE
+
+let graphData = [];
+
 let measurePMap = new WeakMap
 class measureP {
     constructor(date, dataPM) {
@@ -60,6 +63,10 @@ function openFile(event) {
             console.log("Inconcistencias encontradas: " + error)
                 // OTRA FORMA DE LLAMAR LOS DATOS PARA LA GRAFICA
             for (var i = 0; i < measures.length; i++) {
+                graphData.push({
+                    'date': measures[i].getDate,
+                    'preassure' : measures[i].getDataPM
+                });
                 dateF.push(measures[i].getDate)
                 dataF.push(measures[i].getDataPM)
             }

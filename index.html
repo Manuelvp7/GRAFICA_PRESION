@@ -18,16 +18,8 @@
 </head>
 
 <body>
-    <br>
-    <div>
-        <input type="file" id="fileTxt" accept="text/plain">
-        <p id="mesageError"></p>
-    </div>
-    <hr>
-
-    <div>
-        <div class="left table-wrapper">
-            <input type="text" id="myInput" onkeyup="searchWord()" placeholder="Buscar ..." title="Type in a name">
+    <div class="grid-container">
+        <div>
             <table id="myTable">
                 <thead>
                     <tr>
@@ -38,20 +30,38 @@
                 <tbody id="tableData"></tbody>
             </table>
         </div>
+        <div class="item2">
+            <canvas id="canvas" height="200" width="400"></canvas>
+        </div>
+    </div>
+    
+    <br>
+    <div>
+        <input type="file" id="fileTxt" accept="text/plain">
+        <p id="mesageError"></p>
+    </div>
+    <hr>
+
+    <div>
+        <div class="left table-wrapper">
+            <input type="text" id="myInput" onkeyup="searchWord()" placeholder="Buscar ..." title="Type in a name">
+        </div>
 
         <div class="right">
-            <button onclick="resetZoom()">Reset Zoom</button>
+            <!-- <button onclick="resetZoom()">Reset Zoom</button>
             <button onclick="zoom(1.1)">Zoom +10%</button>
-            <button onclick="zoom(0.9)">Zoom -10%</button>
+            <button onclick="zoom(0.9)">Zoom -10%</button> -->
             <!-- <canvas id="canvas" width="150" height="50"></canvas> -->
-            <canvas id="canvas" height="200" width="400"></canvas>
-            <input onchange="filterData()" type="date" id="startdate">
-            <input onchange="filterData()" type="date" id="enddate">
+            <!-- <canvas id="canvas" height="200" width="400"></canvas> -->
+            <!-- <input onchange="filterData()" type="date" id="startdate">
+            <input onchange="filterData()" type="date" id="enddate"> -->
 
         </div>
     </div>
 </body>
 
-<script src="graficador.js"></script>
+<!-- <script src="graficador.js"></script> -->
+<script src="graficador_refactorizado.js"></script>
+<script src="graphConfig.js"></script>
 
 </html>
