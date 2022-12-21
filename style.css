@@ -1,5 +1,10 @@
 /* table thead { display:block; } */
-table { height:600px; overflow-y:scroll; display:block; }
+
+table {
+    height: 600px;
+    overflow-y: scroll;
+    display: block;
+}
 
 
 /* th {
@@ -23,15 +28,19 @@ tr:nth-child(even) {
     background-color: #ffffff;
     padding: 10px;
 }
-  
-.grid-container > div {
+
+.grid-container>div {
     background-color: rgba(255, 255, 255, 0.8);
     text-align: center;
     padding: 20px 0;
     font-size: 12px;
 }
-  
+
 .item2 {
     grid-column-start: 3;
     grid-column-end: 5;
+}
+
+.datarange {
+    width: 275px;
 }

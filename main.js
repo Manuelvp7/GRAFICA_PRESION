@@ -3,15 +3,14 @@ const { app, BrowserWindow, Menu } = require('electron')
 
 
 
-    // const path = require('chart.js')
-    // const Chart = require('chart.js');
+// const path = require('chart.js')
+// const Chart = require('chart.js');
 
 const url = require('url');
 const path = require('path');
 
 const createWindow = () => {
     const win = new BrowserWindow({
-
         width: 1200,
         height: 800,
         titleBarStyle: 'hidden',
@@ -21,7 +20,6 @@ const createWindow = () => {
 
         }
     })
-    win.webContents.openDevTools();
     win.loadFile('index.html')
 }
 

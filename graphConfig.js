@@ -1,5 +1,4 @@
-const config = ( graphDates, graphPreassures) => {
-    
+const config = (graphDates, graphPreassures) => {
 
     return {
         type: "line",
@@ -8,6 +7,8 @@ const config = ( graphDates, graphPreassures) => {
             datasets: [{
                 label: "Presion",
                 data: graphPreassures,
+                pointBorderColor: '#191',
+                pointBorderWidth: 1,
             }]
         },
         options: {
@@ -71,7 +72,3 @@ const config = ( graphDates, graphPreassures) => {
         }
     };
 }
-
-
-
-

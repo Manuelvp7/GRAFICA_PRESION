@@ -13,6 +13,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-adapter-moment/1.0.0/chartjs-adapter-moment.min.js"></script>
 
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
     <link rel="stylesheet" href="style.css">
     <title>Graficador de presión</title>
 </head>
@@ -31,37 +36,22 @@
             </table>
         </div>
         <div class="item2">
-            <canvas id="canvas" height="200" width="400"></canvas>
+            <button onclick="resetZoom()">Reset Zoom</button>
+            <button onclick="zoom(1.1)">Zoom +10%</button>
+            <button onclick="zoom(0.9)">Zoom -10%</button>
+            <input type="text" class="datarange" name="daterange" onchange="filterData()" />
+            <canvas id="canvas" height="250" width="400"></canvas>
         </div>
     </div>
-    
-    <br>
+    <hr>
     <div>
         <input type="file" id="fileTxt" accept="text/plain">
         <p id="mesageError"></p>
-    </div>
-    <hr>
-
-    <div>
-        <div class="left table-wrapper">
-            <input type="text" id="myInput" onkeyup="searchWord()" placeholder="Buscar ..." title="Type in a name">
-        </div>
-
-        <div class="right">
-            <!-- <button onclick="resetZoom()">Reset Zoom</button>
-            <button onclick="zoom(1.1)">Zoom +10%</button>
-            <button onclick="zoom(0.9)">Zoom -10%</button> -->
-            <!-- <canvas id="canvas" width="150" height="50"></canvas> -->
-            <!-- <canvas id="canvas" height="200" width="400"></canvas> -->
-            <!-- <input onchange="filterData()" type="date" id="startdate">
-            <input onchange="filterData()" type="date" id="enddate"> -->
-
-        </div>
-    </div>
 </body>
 
 <!-- <script src="graficador.js"></script> -->
 <script src="graficador_refactorizado.js"></script>
 <script src="graphConfig.js"></script>
+<script src="daterange.js"></script>
 
 </html>
