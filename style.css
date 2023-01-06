@@ -1,21 +1,16 @@
 /* table thead { display:block; } */
 
 table {
-    height: 600px;
+    height: 620px;
+    width: 220px;
     overflow-y: scroll;
     display: block;
-}
-
-
-/* th {
-    border: 1px solid #cccccc;
-    padding: 2px;
 }
 
 th {
     font-weight: bold;
     text-transform: uppercase;
-} */
+}
 
 tr:nth-child(even) {
     background-color: #dddddd;

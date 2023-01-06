@@ -1,8 +1,5 @@
 const { app, BrowserWindow, Menu } = require('electron')
 
-
-
-
 // const path = require('chart.js')
 // const Chart = require('chart.js');
 
@@ -17,7 +14,6 @@ const createWindow = () => {
         webPreferences: {
             //preload: path.join(__dirname, "graficador.js")
             //preload: path.join(__dirname, "index.html")
-
         }
     })
     win.loadFile('index.html')
@@ -37,10 +33,8 @@ const template =
         }]
     }]
 
-
 const menu = Menu.buildFromTemplate(template)
 Menu.setApplicationMenu(menu)
-
 
 app.whenReady().then(() => {
     createWindow()

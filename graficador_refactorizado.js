@@ -2,6 +2,7 @@ let graphData = [];
 let sortGraphData;
 let dates = [];
 let preassures = [];
+multis = [];
 let myChart;
 
 //Referencias de HTML
@@ -57,13 +58,14 @@ document.getElementById("fileTxt").addEventListener("change", function(ev) {
                 if (!(isNaN(preassure))) {
                     graphData.push({
                         'date': date,
-                        'preassure': Number(preassure.split('E-')[0])
+                        'preassure': Number(preassure.split('E')[0]),
+                        'multi': preassure.split('E')[1],
                     });
                 }
             }
         }
         // Ornedar graphData
-        sortGraphData = graphData.sort((a, b) => {
+        sortGraphData = graphData.sort((a, b, ) => {
             return a.date - b.date
         })
         renderGraph()
@@ -108,7 +110,7 @@ document.getElementById("fileTxt").addEventListener("change", function(ev) {
 const createTable = () => {
     let dataHtml = ''
     for (var element of sortGraphData) {
-        dataHtml += `<tr><td>${element.date}</td><td>${element.preassure}</td></tr>`
+        dataHtml += `<tr><td>${element.date}</td><td>${element.preassure} E${element.multi}</td></tr>`
     }
     tableBody.innerHTML = dataHtml
 }
@@ -117,12 +119,20 @@ const renderGraph = () => {
     let ctx = graphCanvas.getContext("2d");
     dates = sortGraphData.map(element => element.date);
     preassures = sortGraphData.map(element => element.preassure);
-    // dates = graphData.map(element => element.date);
-    // preassures = graphData.map(element => element.preassure);
+    multis = sortGraphData.map(element => element.multi)
+        // dates = graphData.map(element => element.date);
+        // preassures = graphData.map(element => element.preassure);
     if (myChart) {
         myChart.destroy();
     }
-    myChart = new Chart(ctx, config(dates, preassures));
+    myChart = new Chart(ctx, config(dates, preassures, multis));
+
+    // for (var element of sortGraphData) {
+    //     // console.log(element.multi[0])
+    //     if (element.multi[0] == "+")
+    //         console.log(element.multi)
+    // }
+
 }
 
 function resetZoom() {

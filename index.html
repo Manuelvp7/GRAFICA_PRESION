@@ -12,6 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/1.0.0/chartjs-plugin-zoom.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-adapter-moment/1.0.0/chartjs-adapter-moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js"></script>
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
@@ -19,17 +20,20 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
     <link rel="stylesheet" href="style.css">
-    <title>Graficador de presión</title>
+    <title>Programa para recuperación y lectura de la bitácora de vacío del equipo de XPS</title>
 </head>
 
 <body>
+    <center>
+        <h1>Programa para recuperación y lectura de la bitácora de vacío del equipo de XPS</h1>
+    </center>
     <div class="grid-container">
         <div>
             <table id="myTable">
                 <thead>
                     <tr>
                         <th>Fecha</th>
-                        <th>Dato</th>
+                        <th>Presión Cámara de Análisis</th>
                     </tr>
                 </thead>
                 <tbody id="tableData"></tbody>
@@ -40,7 +44,7 @@
             <button onclick="zoom(1.1)">Zoom +10%</button>
             <button onclick="zoom(0.9)">Zoom -10%</button>
             <input type="text" class="datarange" name="daterange" onchange="filterData()" />
-            <canvas id="canvas" height="250" width="400"></canvas>
+            <canvas id="canvas" height="250" width="390"></canvas>
         </div>
     </div>
     <hr>

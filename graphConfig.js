@@ -1,4 +1,4 @@
-const config = (graphDates, graphPreassures) => {
+const config = (graphDates, graphPreassures, graphMultis) => {
 
     return {
         type: "line",
@@ -7,12 +7,21 @@ const config = (graphDates, graphPreassures) => {
             datasets: [{
                 label: "Presion",
                 data: graphPreassures,
-                pointBorderColor: '#191',
-                pointBorderWidth: 1,
+                pointBackgroundColor: '#191',
             }]
         },
         options: {
             responsive: true,
+            // Multi
+            tooltips: {
+                callbacks: {
+                    label: function(t, d) {
+                        var xLabel = d.datasets[t.datasetIndex].label;
+                        var yLabel = t.yLabel + 'E';
+                        return xLabel + ': ' + yLabel;
+                    }
+                }
+            },
             interaction: {
                 mode: 'nearest',
                 axis: 'x',
@@ -36,10 +45,9 @@ const config = (graphDates, graphPreassures) => {
                     type: 'linear',
                     display: true,
                     position: 'left',
-
                     title: {
                         display: true,
-                        text: 'Presion',
+                        text: 'Presion (mbar)',
                         color: '#191',
                         font: {
                             family: 'Times',
